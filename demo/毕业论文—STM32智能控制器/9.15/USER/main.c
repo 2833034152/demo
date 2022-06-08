@@ -8,14 +8,14 @@
 #include "algorithms.h"
 
 #include "key.h"
-//ÎªÁË¶ÁÈ¡ÎÄ¼ş
+//ä¸ºäº†è¯»å–æ–‡ä»¶
 #include "stdio.h"    
 #include <stdlib.h>
 #include <string.h>
 
 
 
-//¾ØÕóµÄÏà¹ØÍ·ÎÄ¼ş
+//çŸ©é˜µçš„ç›¸å…³å¤´æ–‡ä»¶
 #include<stdlib.h>
 #include<math.h>
 #include<string.h>
@@ -31,40 +31,40 @@
 //	unsigned long offset;
 //	FILE* HZK;
 
-//	´ò¿ª×Ö¿âÎÄ¼şhzk16*/
+//	æ‰“å¼€å­—åº“æ–‡ä»¶hzk16*/
 //	if ((HZK = fopen("hzk16", "rb")) == NULL )
 //	{
-//		printf("Can't open haz16 ×Ö¿âÎÄ¼ş\n");
+//		printf("Can't open haz16 å­—åº“æ–‡ä»¶\n");
 //		//exit(0);
 //	}
 //	HZK = fopen("hzk16", "rb");
-//	/*ÇøÂë=ÄÚÂë(¸ß×Ö½Ú)-160??Î»Âë=ÄÚÂë(µÍ×Ö½Ú)-160*/
-//	qh = *(hz)-160;	  //´Ó1¿ªÊ¼±àºÅ
-//	wh = *(hz + 1) - 160; //´Ó1¿ªÊ¼±àºÅ
-//	offset = (94 * (qh - 1) + (wh - 1)) * 32; //Ã¿¸öºº×Ö32×Ö½Ú£¬16*16=512Î»£¬512/8=32 
-//	fseek(HZK, offset, SEEK_SET);	/*½«ÎÄ¼şÖ¸ÕëÒÆ¶¯µ½Æ«ÒÆÁ¿µÄÎ»ÖÃ*/
-//	fread(buff, 32, 1, HZK);	/*´ÓÆ«ÒÆÁ¿µÄÎ»ÖÃ¶ÁÈ¡32¸ö×Ö½Ú*/
+//	/*åŒºç =å†…ç (é«˜å­—èŠ‚)-160??ä½ç =å†…ç (ä½å­—èŠ‚)-160*/
+//	qh = *(hz)-160;	  //ä»1å¼€å§‹ç¼–å·
+//	wh = *(hz + 1) - 160; //ä»1å¼€å§‹ç¼–å·
+//	offset = (94 * (qh - 1) + (wh - 1)) * 32; //æ¯ä¸ªæ±‰å­—32å­—èŠ‚ï¼Œ16*16=512ä½ï¼Œ512/8=32 
+//	fseek(HZK, offset, SEEK_SET);	/*å°†æ–‡ä»¶æŒ‡é’ˆç§»åŠ¨åˆ°åç§»é‡çš„ä½ç½®*/
+//	fread(buff, 32, 1, HZK);	/*ä»åç§»é‡çš„ä½ç½®è¯»å–32ä¸ªå­—èŠ‚*/
 //	fclose(HZK);   */
 
 
 
 
 
-//ALIENTEK Ì½Ë÷ÕßSTM32F407¿ª·¢°å ÊµÑé18
-//ADCÄ£Êı×ª»»ÊµÑé-¿âº¯Êı°æ±¾  
-//¼¼ÊõÖ§³Ö£ºwww.openedv.com
-//ÌÔ±¦µêÆÌ£º
-//¹ãÖİÊĞĞÇÒíµç×Ó¿Æ¼¼ÓĞÏŞ¹«Ë¾  
-//×÷Õß£ºÕıµãÔ­×Ó @ALIENTEK
+//ALIENTEK æ¢ç´¢è€…STM32F407å¼€å‘æ¿ å®éªŒ18
+//ADCæ¨¡æ•°è½¬æ¢å®éªŒ-åº“å‡½æ•°ç‰ˆæœ¬  
+//æŠ€æœ¯æ”¯æŒï¼šwww.openedv.com
+//æ·˜å®åº—é“ºï¼š
+//å¹¿å·å¸‚æ˜Ÿç¿¼ç”µå­ç§‘æŠ€æœ‰é™å…¬å¸  
+//ä½œè€…ï¼šæ­£ç‚¹åŸå­ @ALIENTEK
 
- //´Óad»ñÈ¡µÄµçÑ¹´ú±íÏàÓ¦µÃÒºÃæ¸ß¶ÈĞÅºÅ
+ //ä»adè·å–çš„ç”µå‹ä»£è¡¨ç›¸åº”å¾—æ¶²é¢é«˜åº¦ä¿¡å·
 float  adc_voltage2height(float voltage)
 {
 	return voltage;
 }
 
-/*Ò»½×¹ßĞÔ»·½Ú + ÑÓ³Ù»·½Ú  º¯ÊıÊµÏÖ  */
-float  inertia_delay_element(float giveValue , float T , float time)  // ¸ø¶¨ÊäÈëÖµ£¬Ê±¼ä³£ÊıT , ÑÓ³ÙÊ±¼ätime
+/*ä¸€é˜¶æƒ¯æ€§ç¯èŠ‚ + å»¶è¿Ÿç¯èŠ‚  å‡½æ•°å®ç°  */
+float  inertia_delay_element(float giveValue , float T , float time)  // ç»™å®šè¾“å…¥å€¼ï¼Œæ—¶é—´å¸¸æ•°T , å»¶è¿Ÿæ—¶é—´time
 {
 	
 	  float result;
@@ -80,8 +80,8 @@ float  inertia_delay_element(float giveValue , float T , float time)  // ¸ø¶¨ÊäÈ
 	
 }
 
-/*¶ş½×¹ßĞÔ»·½Ú + ÑÓ³Ù»·½Ú  º¯ÊıÊµÏÖ  */
-float  second_element(float giveValue , float T1 ,float T2, float k )  // ¸ø¶¨ÊäÈëÖµ£¬Ê±¼ä³£ÊıT
+/*äºŒé˜¶æƒ¯æ€§ç¯èŠ‚ + å»¶è¿Ÿç¯èŠ‚  å‡½æ•°å®ç°  */
+float  second_element(float giveValue , float T1 ,float T2, float k )  // ç»™å®šè¾“å…¥å€¼ï¼Œæ—¶é—´å¸¸æ•°T
 {
 	
 	static  float result;
@@ -119,16 +119,16 @@ float get_control_height(float reference_height , float last_height , float T)
 
 
 
-	float refer_point[300] = {0}; //²Î¿¼¹ì¼£
-    float curData[300] =  {0};   //ÇúÏßÉÏµÄµã
+	float refer_point[300] = {0}; //å‚è€ƒè½¨è¿¹
+    float curData[300] =  {0};   //æ›²çº¿ä¸Šçš„ç‚¹
 	float pValue[300]  =  {0};
 	float  iValue[300] =  {0};
 	float  dValue[300] =  {0};
 
-//********************¾ØÕóµÄÏà¹ØÊµÏÖ*****************************************	
+//********************çŸ©é˜µçš„ç›¸å…³å®ç°*****************************************	
 	
 	/*
-	¾ØÕóAºÍÏòÁ¿b£¬Ïà³Ë½á¹û´æÔÚAbÀï
+	çŸ©é˜µAå’Œå‘é‡bï¼Œç›¸ä¹˜ç»“æœå­˜åœ¨Abé‡Œ
 */
 void matrixTimesVec11(double A[M][N], double B[N][M], double AB[M][M])
 {
@@ -230,7 +230,7 @@ void vecPlus(double A[2][2], double B[2][2], double AB[M][M] )
 	}
 }
 
-//Çó¾ØÕóµÄ×ªÖÃ¾ØÕó
+//æ±‚çŸ©é˜µçš„è½¬ç½®çŸ©é˜µ
 void    transpose ( double A[2][2], double B[2][2])
 {
 	int i = 0 , j = 0; 
@@ -255,20 +255,20 @@ void    transpose ( double A[2][2], double B[2][2])
 
 }
 
-//ÇóÒÑÖª¾ØÕóµÄÄæ¾ØÕó
+//æ±‚å·²çŸ¥çŸ©é˜µçš„é€†çŸ©é˜µ
 void   inverseMatrix (  double A[2][2], double B[2][2])
 {
-	//ÏÈÇó³ö¾ØÕóµÄĞĞÁĞÊ½
+	//å…ˆæ±‚å‡ºçŸ©é˜µçš„è¡Œåˆ—å¼
 	double res = 0;
 	res = ((A[0][0]) * (A[1][1])) - ((A[0][1]) * (A[1][0]));
 	
-	//ÔÙÇó³ö°éËæ¾ØÕó£¬ Ò²¾ÍÊÇ´úÊıÓà×ÓÊ½
+	//å†æ±‚å‡ºä¼´éšçŸ©é˜µï¼Œ ä¹Ÿå°±æ˜¯ä»£æ•°ä½™å­å¼
 	B[0][0] = A[1][1];
 	B[1][1] = A[0][0];
 	B[0][1] = A[1][0] * (-1);
 	B[1][0] = A[0][1] * (-1);
 	
-//×îºó£¬ Çó³ö×îÖÕµÄÄæ¾ØÕó
+//æœ€åï¼Œ æ±‚å‡ºæœ€ç»ˆçš„é€†çŸ©é˜µ
 	B[0][0] = A[1][1] / res ;
 	B[1][1] = A[0][0] / res;
 	B[0][1] = A[1][0] / res* (-1);
@@ -281,8 +281,8 @@ void   inverseMatrix (  double A[2][2], double B[2][2])
 
 
 	
-//´òÓ¡¾ØÕó
-void  printMatrix(double A[][2] , int k , int z)      // ´«µİÊı×éºÍĞĞÊıºÍÁĞÊı  
+//æ‰“å°çŸ©é˜µ
+void  printMatrix(double A[][2] , int k , int z)      // ä¼ é€’æ•°ç»„å’Œè¡Œæ•°å’Œåˆ—æ•°  
 {
 	int i = 0 , j = 0;
 	for( i = 0; i < k ; i++)
@@ -297,8 +297,8 @@ void  printMatrix(double A[][2] , int k , int z)      // ´«µİÊı×éºÍĞĞÊıºÍÁĞÊı
 	}
 }
 
-//´òÓ¡¾ØÕó2
-void  printMatrix2(double A[][1] , int k )      // ´«µİÊı×éºÍĞĞÊıºÍÁĞÊı  
+//æ‰“å°çŸ©é˜µ2
+void  printMatrix2(double A[][1] , int k )      // ä¼ é€’æ•°ç»„å’Œè¡Œæ•°å’Œåˆ—æ•°  
 {
 	int i = 0 , j = 0;
 	for( i = 0; i < k ; i++)
@@ -309,12 +309,12 @@ void  printMatrix2(double A[][1] , int k )      // ´«µİÊı×éºÍĞĞÊıºÍÁĞÊı
 	
 	
 
-int main1(void)
+int main1(void)    //ä½¿ç”¨æ¨¡ç³ŠPIDæ§åˆ¶ä¸€é˜¶ã€äºŒé˜¶ç³»ç»Ÿ
 { 
 	
 	
-	float  curHeight = 0;      // µ±Ç°ÒºÎ»¸ß¶È
-    float  tarHeight = 100;     //  Ä¿±êÒºÎ»¸ß¶È
+	float  curHeight = 0;      // å½“å‰æ¶²ä½é«˜åº¦
+    float  tarHeight = 100;     //  ç›®æ ‡æ¶²ä½é«˜åº¦
 	
 	sPID  s = { 1 , 0.5 , 0.2, 0 ,0 ,0 ,0};
 	sPID  dPID = {0 , 0 , 0, 0 ,0 ,0 ,0};
@@ -323,22 +323,22 @@ int main1(void)
  	u16 adcx;
 	float temp;
 	float  pid_out;
-	float u  ;    //±Õ»·¸º·´À¡ÏµÍ³µÄÊä³öu
-	float  deviation; // c - u   Ä¿±êÖµ - µ±Ç°Öµ
-	int loop_n = 0  ;    //  while Ñ­»·µÄ´ÎÊı
+	float u  ;    //é—­ç¯è´Ÿåé¦ˆç³»ç»Ÿçš„è¾“å‡ºu
+	float  deviation; // c - u   ç›®æ ‡å€¼ - å½“å‰å€¼
+	int loop_n = 0  ;    //  while å¾ªç¯çš„æ¬¡æ•°
      
 
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//ÉèÖÃÏµÍ³ÖĞ¶ÏÓÅÏÈ¼¶·Ö×é2
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//è®¾ç½®ç³»ç»Ÿä¸­æ–­ä¼˜å…ˆçº§åˆ†ç»„2
 	
 	pwm_realize();
 	
-	delay_init(168);    //³õÊ¼»¯ÑÓÊ±º¯Êı
-	uart_init(115200);	//³õÊ¼»¯´®¿Ú²¨ÌØÂÊÎª115200
-	LED_Init();			//³õÊ¼»¯LED 
+	delay_init(168);    //åˆå§‹åŒ–å»¶æ—¶å‡½æ•°
+	uart_init(115200);	//åˆå§‹åŒ–ä¸²å£æ³¢ç‰¹ç‡ä¸º115200
+	LED_Init();			//åˆå§‹åŒ–LED 
 
 	
- 	LCD_Init();         //³õÊ¼»¯LCD½Ó¿Ú
-	Adc_Init();         //³õÊ¼»¯ADC
+ 	LCD_Init();         //åˆå§‹åŒ–LCDæ¥å£
+	Adc_Init();         //åˆå§‹åŒ–ADC
 	POINT_COLOR=BLUE; 
 	
 
@@ -362,14 +362,14 @@ int main1(void)
         printf("%d , %lf\r\n",loop_n , dValue[loop_n]);
 
 		
-  	    dPID  =   pidController( tarHeight ,curHeight , &s);	     //Ä¿±ê¸ß¶ÈºÍµ±Ç°¸ß¶È
+  	    dPID  =   pidController( tarHeight ,curHeight , &s);	     //ç›®æ ‡é«˜åº¦å’Œå½“å‰é«˜åº¦
 		pid_out = (s.Kp+dPID.Kp)*s.e + (s.Kd+dPID.Kd)*s.ec + (s.Ki+dPID.Ki)*s.sumE;
 	
 		 
 	
-//    ÏìÓ¦ÇúÏß²âÊÔ
-		curData[loop_n]  = curHeight;                            //µ±Ç°¸ß¶ÈÊı×é±»³õÊ¼»¯Íê±Ï
-//		curHeight = inertia_delay_element(pid_out , 1 , 0.3);   //Ê±¼ä³£ÊıÉèÎª1 £¬ÑÓ³ÙÊ±¼äÒ²ÉèÎª1
+//    å“åº”æ›²çº¿æµ‹è¯•
+		curData[loop_n]  = curHeight;                            //å½“å‰é«˜åº¦æ•°ç»„è¢«åˆå§‹åŒ–å®Œæ¯•
+//		curHeight = inertia_delay_element(pid_out , 1 , 0.3);   //æ—¶é—´å¸¸æ•°è®¾ä¸º1 ï¼Œå»¶è¿Ÿæ—¶é—´ä¹Ÿè®¾ä¸º1
         curHeight = second_element(pid_out, 1 , 1 , 1);
 		loop_n ++;
 
@@ -421,7 +421,7 @@ int main()
 	double D[2][2] =  {   3 , 4 , 5 , 6};
 	double E[2][2] =  { 0 ,0,   0,0};
 	
-	//Ç°Ãæ¶¼ÊÇ¾ØÕó²âÊÔ£¬ ÕâĞ©²ÅÊÇÏîÄ¿ËùĞè¾ØÕó
+	//å‰é¢éƒ½æ˜¯çŸ©é˜µæµ‹è¯•ï¼Œ è¿™äº›æ‰æ˜¯é¡¹ç›®æ‰€éœ€çŸ©é˜µ
 	double s[2][2] = { 1 , 0 , 1 , 0};
 	double matrixA[2][2] = { 0 , -1 , 1 , 2};
 	double matrixB[2][1] = { 0 , 1};
@@ -439,46 +439,46 @@ int main()
 	double u = 0 ;
 	
 	
-	//¶ş½×ÏµÍ³µÄ×´Ì¬·´À¡ÓÃµÄÉÏ
+	//äºŒé˜¶ç³»ç»Ÿçš„çŠ¶æ€åé¦ˆç”¨çš„ä¸Š
 	float  curSpeed = 0;   
 	float  lastHeight = 0;
 	
-	int serial_i = 0;   //´®¿ÚÑ­»·´òÓ¡ÓÃµÄ
+	int serial_i = 0;   //ä¸²å£å¾ªç¯æ‰“å°ç”¨çš„
 	
-	u8 key;           //±£´æ¼üÖµ
+	u8 key;           //ä¿å­˜é”®å€¼
 	
 	
 	u16 adcx;
 	float temp;
 
-	int loop_n = 0  ;    //  while Ñ­»·µÄ´ÎÊı
+	int loop_n = 0  ;    //  while å¾ªç¯çš„æ¬¡æ•°
 	
-	float  curHeight = 0;      // µ±Ç°ÒºÎ»¸ß¶È
-    float  tarHeight = 100;     //  Ä¿±êÒºÎ»¸ß¶È
-	float  roll_output = 0;     //¹ö¶¯ÓÅ»¯Êä³ö
+	float  curHeight = 0;      // å½“å‰æ¶²ä½é«˜åº¦
+    float  tarHeight = 100;     //  ç›®æ ‡æ¶²ä½é«˜åº¦
+	float  roll_output = 0;     //æ»šåŠ¨ä¼˜åŒ–è¾“å‡º
 	int i  = 0;
      
 
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//ÉèÖÃÏµÍ³ÖĞ¶ÏÓÅÏÈ¼¶·Ö×é2
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//è®¾ç½®ç³»ç»Ÿä¸­æ–­ä¼˜å…ˆçº§åˆ†ç»„2
 	
 	
-	delay_init(168);    //³õÊ¼»¯ÑÓÊ±º¯Êı
-	uart_init(115200);	//³õÊ¼»¯´®¿Ú²¨ÌØÂÊÎª115200
-	LED_Init();			//³õÊ¼»¯LED 
+	delay_init(168);    //åˆå§‹åŒ–å»¶æ—¶å‡½æ•°
+	uart_init(115200);	//åˆå§‹åŒ–ä¸²å£æ³¢ç‰¹ç‡ä¸º115200
+	LED_Init();			//åˆå§‹åŒ–LED 
 
 	
-// 	LCD_Init();         //³õÊ¼»¯LCD½Ó¿Ú
-	Adc_Init();         //³õÊ¼»¯ADC
+// 	LCD_Init();         //åˆå§‹åŒ–LCDæ¥å£
+	Adc_Init();         //åˆå§‹åŒ–ADC
 	POINT_COLOR=BLUE; 
 
-   //³õÊ¼»¯²Î¿¼¹ì¼£
+   //åˆå§‹åŒ–å‚è€ƒè½¨è¿¹
    for(i = 0; i < 300; i++)
    {
 	   refer_point[i] = i;
 	   
    }
 
-//Á½¾ØÕóÏà³Ë   
+//ä¸¤çŸ©é˜µç›¸ä¹˜   
 //   printMatrix( A , M , N);
 //    printMatrix( B , N , M );
 //   matrixTimesVec(A , B , AB);
@@ -489,12 +489,12 @@ int main()
 //   printMatrix(AB2 , M , M);
    
    
-//   vecPlus(s , matrixA , tmpMatrix);      //Á½¾ØÕóÏà¼Ó½á¹û·ÅÔÚÁÙÊ±¾ØÕóÄÇÀï
-//	matrixTimesVec£¨matrixB , matrixK , tmp3);
+//   vecPlus(s , matrixA , tmpMatrix);      //ä¸¤çŸ©é˜µç›¸åŠ ç»“æœæ”¾åœ¨ä¸´æ—¶çŸ©é˜µé‚£é‡Œ
+//	matrixTimesVecï¼ˆmatrixB , matrixK , tmp3);
 	
    
    
-//Á½¾ØÕóÏà¼Ó   
+//ä¸¤çŸ©é˜µç›¸åŠ    
 //   vecPlus(C ,D , E);
  //  printMatrix(E , M  ,  M);
    
@@ -510,16 +510,16 @@ int main()
    
    
  #if 0  
-	while(1)    //¶ÔÓÚÒ»½×¹ßĞÔÏµÍ³ÓÃMPCËã·¨
+	while(1)    //å¯¹äºä¸€é˜¶æƒ¯æ€§ç³»ç»Ÿç”¨MPCç®—æ³•
 	{  
 		
 		curData[loop_n]  = curHeight;   
 //		tarHeight = refer_point[loop_n];
 
-		//¸ù¾İÔ¤²âÄ£ĞÍµÃµ½±¾ÂÖ¿ØÖÆÁ¿ £¨ÊäÈë£º1.ÉÏÒ»Ê±¿ÌµÄÊä³ö¸ß¶È £¬ 2.µ±Ç°µÄÔ¤²âÊäÈë   Êä³ö£©
+		//æ ¹æ®é¢„æµ‹æ¨¡å‹å¾—åˆ°æœ¬è½®æ§åˆ¶é‡ ï¼ˆè¾“å…¥ï¼š1.ä¸Šä¸€æ—¶åˆ»çš„è¾“å‡ºé«˜åº¦ ï¼Œ 2.å½“å‰çš„é¢„æµ‹è¾“å…¥   è¾“å‡ºï¼‰
 		roll_output =  get_control_height(tarHeight  , curHeight , 2);
 					 
-		curHeight = inertia_delay_element(roll_output , 2 , 0.3);   //Ê±¼ä³£ÊıÉèÎª1 £¬ÑÓ³ÙÊ±¼äÒ²ÉèÎª1
+		curHeight = inertia_delay_element(roll_output , 2 , 0.3);   //æ—¶é—´å¸¸æ•°è®¾ä¸º1 ï¼Œå»¶è¿Ÿæ—¶é—´ä¹Ÿè®¾ä¸º1
 			
 		
 			
@@ -528,7 +528,7 @@ int main()
 		     	
 		
 		
-//		printf("%d , ¹ö¶¯ÓÅ»¯Êä³ö:%lf , µ±Ç°¸ß¶È%lf\r\n",loop_n , roll_output ,curHeight);
+//		printf("%d , æ»šåŠ¨ä¼˜åŒ–è¾“å‡º:%lf , å½“å‰é«˜åº¦%lf\r\n",loop_n , roll_output ,curHeight);
 		loop_n++;
 		
 		 if(loop_n == 300)  
@@ -546,7 +546,7 @@ int main()
 //	showCur(curData , 300 , tarHeight);
 
  #else  
-	while(1)                 //¶Ô¶ş½×ÏµÍ³ ÓÃ×´Ì¬·´À¡Ëã·¨
+	while(1)                 //å¯¹äºŒé˜¶ç³»ç»Ÿ ç”¨çŠ¶æ€åé¦ˆç®—æ³•
 	{
 		 
 		
@@ -554,7 +554,7 @@ int main()
 		
 		
 		curData[loop_n]  = curHeight;  
-		//ÇóµÃ¿ØÖÆÁ¿u
+		//æ±‚å¾—æ§åˆ¶é‡u
 		u = (matrixK[0][0] * curHeight  + matrixK[0][0] * curSpeed ) * ( -1) + tarHeight; 
 		
 		lastHeight = curHeight;
@@ -563,7 +563,7 @@ int main()
 		curSpeed = (curHeight - lastHeight) / 1;
 		
 		
-//		printf("%d , ¹ö¶¯ÓÅ»¯Êä³ö:%lf , µ±Ç°¸ß¶È%lf\r\n",loop_n , u ,curHeight);
+//		printf("%d , æ»šåŠ¨ä¼˜åŒ–è¾“å‡º:%lf , å½“å‰é«˜åº¦%lf\r\n",loop_n , u ,curHeight);
 		loop_n++;
 		
 		 if(loop_n == 300)  
@@ -586,23 +586,23 @@ int main()
  
   
 	
-	LED_Init();				//³õÊ¼»¯LED¶Ë¿Ú 
+	LED_Init();				//åˆå§‹åŒ–LEDç«¯å£ 
 
-	KEY_Init();       //³õÊ¼»¯Óë°´¼üÁ¬½ÓµÄÓ²¼ş½Ó¿Ú
-	LED0=0;				  	//ÏÈµãÁÁºìµÆ
+	KEY_Init();       //åˆå§‹åŒ–ä¸æŒ‰é”®è¿æ¥çš„ç¡¬ä»¶æ¥å£
+	LED0=0;				  	//å…ˆç‚¹äº®çº¢ç¯
 	while(1)
 	{
-		key=KEY_Scan(0);		//µÃµ½¼üÖµ
+		key=KEY_Scan(0);		//å¾—åˆ°é”®å€¼
 	   	if(key)
 		{						   
 			switch(key)
 			{				 
-				case WKUP_PRES:	//¿ØÖÆ·äÃùÆ÷
+				case WKUP_PRES:	//æ§åˆ¶èœ‚é¸£å™¨
 					printf("%d\r\n",4);
 				
 //					BEEP=!BEEP;
 					break;
-				case KEY0_PRES:	//¿ØÖÆLED0·­×ª
+				case KEY0_PRES:	//æ§åˆ¶LED0ç¿»è½¬
 					LED0=!LED0;
 				
 				 for( serial_i = 0; serial_i < 300; serial_i++){
@@ -617,12 +617,12 @@ int main()
 				
 				
 					break;
-				case KEY1_PRES:	//¿ØÖÆLED1·­×ª	 
+				case KEY1_PRES:	//æ§åˆ¶LED1ç¿»è½¬	 
 					LED1=!LED1;
 				printf("%d\r\n",2);
 				 
 					break;
-				case KEY2_PRES:	//Í¬Ê±¿ØÖÆLED0,LED1·­×ª 
+				case KEY2_PRES:	//åŒæ—¶æ§åˆ¶LED0,LED1ç¿»è½¬ 
 					printf("%d\r\n",3);
 				
 					LED0=!LED0;
